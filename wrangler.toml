@@ -1,0 +1,8 @@
+name = "r2-ui-worker"
+compatibility_date = "2022-04-05"
+
+# modify `bucket_name`
+# don't modify the `binding`
+r2_buckets = [
+    {binding = "R2_BUCKET", bucket_name = "test-bucket"}
+]
