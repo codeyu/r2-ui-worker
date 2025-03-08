@@ -3,8 +3,7 @@ import {Context} from "hono"
 export default async function (c: Context) {
   try {
     const env = c.env
-    const bucket = env.R2_BUCKET
-    const bucketName = bucket.name
+    const bucketName = env.BUCKET_NAME
 
     // 从查询参数获取 key
     const key = c.req.query('key')

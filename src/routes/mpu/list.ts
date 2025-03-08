@@ -3,10 +3,8 @@ import { Context } from "hono"
 export default async function (c: Context) {
     try {
         const env = c.env
-        // 获取 R2 bucket 的绑定
-        const bucket = env.R2_BUCKET
         // 获取 bucket 名称
-        const bucketName = bucket.name
+        const bucketName = env.BUCKET_NAME
 
         // 获取分页参数
         const cursor = c.req.query('cursor')

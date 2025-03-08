@@ -142,7 +142,8 @@ def deploy_worker(worker_config):
         secrets = {
             'AUTH_KEY_SECRET': os.environ.get('AUTH_KEY_SECRET'),
             'CLOUDFLARE_API_TOKEN': os.environ.get('CLOUDFLARE_API_TOKEN'),
-            'CLOUDFLARE_ACCOUNT_ID': os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+            'CLOUDFLARE_ACCOUNT_ID': os.environ.get('CLOUDFLARE_ACCOUNT_ID'),
+            'BUCKET_NAME': worker_config['bucket_name']
         }
 
         for secret_name, secret_value in secrets.items():
