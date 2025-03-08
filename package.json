@@ -1,5 +1,5 @@
 {
-  "name": "r2-ui-worker",
+  "name": "r2-ui-worker-audio",
   "scripts": {
     "dev": "wrangler dev src/index.ts --port 4897",
     "deploy": "wrangler deploy --minify src/index.ts"

@@ -1,0 +1,9 @@
+{
+  "workers": [
+    {
+      "worker_name": "test-worker",
+      "bucket_name": "test-bucket",
+      "skip_if_exists": false
+    }
+  ]
+} 

@@ -22,7 +22,7 @@ const app = new Hono<{
 
 app.use(cors())
 app.get('/support_mpu', MpuSupport)
-app.get('/', (c) => c.text('Hello R2! v2025.01.13'))
+app.get('/', (c) => c.text('Hello R2! v2025.03.08.171740'))
 app.use('*', checkHeader)
 
 // multipart upload operations
