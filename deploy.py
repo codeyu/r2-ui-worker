@@ -1,12 +1,13 @@
 import os
 import json
-import shutil
 import subprocess
 from dotenv import load_dotenv
 from datetime import datetime
+from pathlib import Path
 
 # 加载 .env 文件
-load_dotenv()
+if Path('.env').exists():
+    load_dotenv()
 
 def load_config():
     try:
