@@ -34,8 +34,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           AUTH_KEY_SECRET: ${{ secrets.AUTH_KEY_SECRET }}
-        run: |
-          export CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}
-          export CLOUDFLARE_ACCOUNT_ID=${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          export AUTH_KEY_SECRET=${{ secrets.AUTH_KEY_SECRET }}
-          python deploy.py 
+        run: python deploy.py 
