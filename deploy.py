@@ -87,6 +87,18 @@ def check_worker_exists(worker_name):
         print(f"Error checking worker existence: {str(e)}")
         return False
 
+def set_secret(secret_name: str, secret_value: str):
+    """设置 worker 的环境变量"""
+    try:
+        subprocess.run(f'npx wrangler secret put {secret_name}', 
+                      input=secret_value,
+                      check=True,
+                      shell=True,
+                      encoding='utf-8')
+        print(f"Successfully set {secret_name}")
+    except Exception as e:
+        print(f"Failed to set {secret_name}: {str(e)}")
+
 def deploy_worker(worker_config):
     try:
         worker_name = worker_config['worker_name']
@@ -126,16 +138,18 @@ def deploy_worker(worker_config):
                       shell=True,
                       encoding='utf-8')
         
-        # 设置 secret
-        auth_key = os.environ.get('AUTH_KEY_SECRET')
-        if auth_key:
-            subprocess.run('npx wrangler secret put AUTH_KEY_SECRET', 
-                         input=auth_key,
-                         check=True,
-                         shell=True,
-                         encoding='utf-8')
-        else:
-            print("Warning: AUTH_KEY_SECRET not found in environment variables")
+        # 设置所有环境变量
+        secrets = {
+            'AUTH_KEY_SECRET': os.environ.get('AUTH_KEY_SECRET'),
+            'CLOUDFLARE_API_TOKEN': os.environ.get('CLOUDFLARE_API_TOKEN'),
+            'CLOUDFLARE_ACCOUNT_ID': os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+        }
+
+        for secret_name, secret_value in secrets.items():
+            if secret_value:
+                set_secret(secret_name, secret_value)
+            else:
+                print(f"Warning: {secret_name} not found in environment variables")
         
         print(f"Successfully deployed {worker_name}")
         
