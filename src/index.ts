@@ -11,6 +11,7 @@ import MpuParts from './routes/mpu/parts'
 import MpuAbort from './routes/mpu/abort'
 import MpuComplete from './routes/mpu/complete'
 import MpuSupport from './routes/mpu/support'
+import MpuList from './routes/mpu/list'
 
 import checkHeader from "./middleware/checkHeader"
 
@@ -26,6 +27,8 @@ app.get('/', (c) => c.text('Hello R2! v2025.03.08.171740'))
 app.use('*', checkHeader)
 
 // multipart upload operations
+app.get('/mpu/list', MpuList)
+app.get('/mpu/parts', MpuParts)
 app.post('/mpu/create/:key{.*}', MpuCreate)
 app.put('/mpu/:key{.*}', MpuParts)
 app.delete('/mpu/:key{.*}', MpuAbort)
